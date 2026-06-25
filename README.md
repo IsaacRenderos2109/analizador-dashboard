@@ -1,132 +1,151 @@
-# analizador dashboard
-Sistema web para cargar, analizar y visualizar archivos CSV mediante dashboards interactivos.
-
 # Analizador de CSV y Generador de Dashboards
 
 Sistema web desarrollado en Python con Streamlit para cargar archivos CSV, revisar su estructura, limpiar columnas marcadas para eliminación, explorar datos y generar dashboards con gráficos.
 
+Este proyecto permite analizar archivos CSV desde una interfaz web, generar visualizaciones automáticas y crear gráficos personalizados.
+
+---
+
 ## Funciones principales
 
-- Carga de archivos CSV desde el navegador.
-- Detección automática de separador y codificación.
-- Resumen del archivo: filas, columnas, encoding y separador.
-- Vista previa de registros.
-- Perfil de columnas: valores vacíos, valores únicos y ejemplos.
-- Limpieza de columnas marcadas como `ELIMINAR COLUMNA`.
-- Dashboard automático para preguntas específicas de análisis.
-- Gráficos manuales: barras, circular, histograma, barras cruzadas, línea por fecha y dispersión.
-- Módulo de consultas guiadas.
-- Exportación de CSV limpio.
-- SQL sugerido para crear tabla en MySQL.
+* Carga de archivos CSV desde el navegador.
+* Detección automática de separador y codificación.
+* Resumen del archivo: filas, columnas, encoding y separador.
+* Vista previa de registros.
+* Perfil de columnas: valores vacíos, valores únicos y ejemplos.
+* Limpieza de columnas marcadas como `ELIMINAR COLUMNA`.
+* Dashboard automático para preguntas específicas de análisis.
+* Gráficos manuales:
 
-## Requisitos previos
+  * conteo por categoría,
+  * gráfico circular,
+  * histograma,
+  * barras cruzadas,
+  * línea por fecha,
+  * dispersión.
+* Módulo de consultas guiadas.
+* Exportación de CSV limpio.
+* SQL sugerido para crear tabla en MySQL.
 
-- Python 3.10 o superior.
-- Git, si se descargará desde GitHub.
-- Internet para instalar dependencias la primera vez.
+---
 
-Verificar Python:
+## Archivos incluidos
 
-```powershell
-python --version
+```text
+analizador_csv_dashboard/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── INSTALACION_USO.md
+├── .gitignore
+├── instalar_dependencias.bat
+└── ejecutar.bat
 ```
 
-Si no funciona:
+| Archivo                     | Función                                                     |
+| --------------------------- | ----------------------------------------------------------- |
+| `app.py`                    | Código principal del sistema.                               |
+| `requirements.txt`          | Librerías necesarias para ejecutar el proyecto.             |
+| `README.md`                 | Documentación principal.                                    |
+| `INSTALACION_USO.md`        | Guía rápida de instalación y ejecución.                     |
+| `.gitignore`                | Evita subir archivos innecesarios o datasets grandes.       |
+| `instalar_dependencias.bat` | Verifica Python, instala dependencias y prepara el entorno. |
+| `ejecutar.bat`              | Ejecuta el sistema en Windows.                              |
 
-```powershell
-py --version
+---
+
+## Instalación recomendada en Windows
+
+### 1. Instalar dependencias automáticamente
+
+Dar doble clic en:
+
+```text
+instalar_dependencias.bat
 ```
 
-## Descargar desde GitHub
+Este archivo realiza lo siguiente:
 
-```powershell
-git clone URL_DEL_REPOSITORIO
-cd analizador_csv_dashboard
+1. Verifica si Python está instalado.
+2. Si Python no está instalado, intenta instalarlo con `winget`.
+3. Si Python ya está instalado, intenta actualizarlo cuando sea posible.
+4. Crea un entorno virtual local llamado `.venv`.
+5. Actualiza `pip`.
+6. Instala las dependencias del proyecto.
+
+Dependencias utilizadas:
+
+```text
+streamlit
+pandas
+plotly
 ```
 
-También se puede descargar como ZIP desde GitHub: **Code > Download ZIP**, descomprimir y abrir PowerShell dentro de la carpeta.
+---
 
-## Instalación rápida
+### 2. Ejecutar el sistema
 
-```powershell
-python -m pip install -r requirements.txt
+Dar doble clic en:
+
+```text
+ejecutar.bat
 ```
 
-Si no funciona:
+Si todo está correcto, se abrirá el navegador con la aplicación.
 
-```powershell
-py -m pip install -r requirements.txt
-```
-
-## Ejecución
-
-```powershell
-python -m streamlit run app.py
-```
-
-Si no funciona:
-
-```powershell
-py -m streamlit run app.py
-```
-
-Luego se abrirá el navegador. Si no se abre, entrar manualmente a:
+Si no se abre automáticamente, ingresar manualmente a:
 
 ```text
 http://localhost:8501
 ```
 
-## Instalación recomendada con entorno virtual
+---
 
-Crear entorno virtual:
+## Instalación manual
 
-```powershell
-python -m venv .venv
-```
-
-Activar entorno:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Si PowerShell bloquea la activación:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-```
-
-Instalar dependencias:
+Abrir PowerShell dentro de la carpeta del proyecto y ejecutar:
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-Ejecutar:
+Si `python` no funciona, usar:
+
+```powershell
+py -m pip install -r requirements.txt
+```
+
+Luego ejecutar:
 
 ```powershell
 python -m streamlit run app.py
 ```
 
-Salir del entorno:
+Si `python` no funciona, usar:
 
 ```powershell
-deactivate
+py -m streamlit run app.py
 ```
+
+---
 
 ## Uso del sistema
 
 1. Ejecutar el programa.
 2. Subir un archivo `.csv`.
-3. Revisar resumen de filas, columnas, separador y codificación.
-4. Revisar perfil de columnas.
+3. Revisar el resumen de filas, columnas, separador y codificación.
+4. Revisar el perfil de columnas.
 5. Entrar a **Dashboard por preguntas** para generar visualizaciones automáticas.
 6. Entrar a **Gráficos manuales** para crear visualizaciones personalizadas.
 7. Entrar a **Consultas guiadas** para escribir preguntas sobre el dataset.
 8. Exportar el CSV limpio si se necesita.
 
+---
+
 ## Preguntas de prueba
+
+Después de subir un dataset compatible, se pueden probar preguntas como:
 
 ```text
 ¿Cuántos pacientes han fallecido por cada estatus del caso?
@@ -148,46 +167,47 @@ deactivate
 ¿Cuántos pacientes confirmados padecen diabetes y cuántos no?
 ```
 
-## Errores comunes
-
-### `streamlit` no se reconoce
-
-Usar:
-
-```powershell
-python -m streamlit run app.py
-```
-
-O reinstalar:
-
-```powershell
-python -m pip install streamlit pandas plotly
-```
-
-### No se puede activar el entorno virtual
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-```
-
-### No encuentra `requirements.txt`
-
-Verificar que se está dentro de la carpeta correcta:
-
-```powershell
-dir
-```
-
-Deben aparecer:
+También se pueden usar preguntas generales como:
 
 ```text
-app.py
-requirements.txt
-README.md
+Grafica diabetes
 ```
+
+```text
+Muestra un conteo por dictamen
+```
+
+```text
+Grafica entidad_res_desc
+```
+
+---
+
+## Subir a GitHub
+
+Para subir el proyecto a GitHub:
+
+```powershell
+git init
+git add .
+git commit -m "Primer commit - analizador CSV dashboard"
+git branch -M main
+git remote add origin URL_DEL_REPOSITORIO
+git push -u origin main
+```
+
+---
 
 ## Nota sobre datasets
 
-No se recomienda subir archivos CSV grandes o sensibles al repositorio.  
+No se recomienda subir archivos CSV grandes o sensibles al repositorio.
+
+El archivo `.gitignore` está configurado para ignorar archivos como:
+
+```text
+*.csv
+*.xlsx
+*.xls
+```
+
 Cada usuario puede cargar su propio CSV desde la interfaz del sistema.
